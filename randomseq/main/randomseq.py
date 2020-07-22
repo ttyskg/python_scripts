@@ -88,8 +88,8 @@ if __name__ == '__main__':
     print('Inputs:\n',\
           '  Number of seq: {}\n'.format(n),\
           '  Sequence length: {}\n'.format(slen),\
-          '  minimum GC%: {}\n'.format(minTm),\
-          '  maximum GC%: {}\n'.format(maxTm))
+          '  minimum GC%: {}\n'.format(minGC),\
+          '  maximum GC%: {}\n'.format(maxGC))
     
     res = select_seq(n=n, slen=slen, minGC=minGC, maxGC=maxGC)
     with open('./selected_seq.csv', mode='w') as f:
