@@ -8,8 +8,8 @@ This script requires four args.
 
 1. Number of DNA sequences to create
 1. Sequence length
-1. Minimum Tm value
-1. Maximum Tm value
+1. Minimum GC content
+1. Maximum GC content
 
 __Example:__
 ```bash

@@ -51,28 +51,29 @@ def calc_gc(seq):
     return round((nC + nG) / len(seq) * 100, 1)
 
 
-def select_seq(n=3, slen=20, minTm=59, maxTm=62):
+def select_seq(n=3, slen=20, minGC=59, maxGC=62):
     '''Create DNA sequences that meet the condition.
 
     :parm n: Number of sequences to create
     :type n: int
     :parm slen: Sequence length
     :parm slen: int
-    :parm minTm: minimum Tm value
-    :type minTm: float
-    :parm maxTm: maximum Tm value
-    :type maxTm: float
+    :parm minGC: minimum GC content
+    :type minGC: float
+    :parm maxGC: maximum GC contetn
+    :type maxGC: float
 
     :rtype: set
-    :return: Set of tuples which contained (seq, Tm)
+    :return: Set of tuples which contained (seq, GC%, Tm)
     '''
 
     res = set()
     while len(res) < n:
         seq = random_seq()
+        gc = calc_gc(seq)
         tm = calc_tm(seq)
-        if minTm <= tm <= maxTm:
-            res.add((seq, tm))
+        if minGC <= gc <= maxGC:
+            res.add((seq, gc, tm))
     
     return list(res)
 
@@ -81,21 +82,21 @@ if __name__ == '__main__':
     args = sys.argv
     n = int(args[1])
     slen = str(args[2])
-    minTm = float(args[3])
-    maxTm = float(args[4])
+    minGC = float(args[3])
+    maxGC = float(args[4])
 
     print('Inputs:\n',\
           '  Number of seq: {}\n'.format(n),\
           '  Sequence length: {}\n'.format(slen),\
-          '  minimum Tm: {}\n'.format(minTm),\
-          '  maximum Tm: {}\n'.format(maxTm))
+          '  minimum GC%: {}\n'.format(minTm),\
+          '  maximum GC%: {}\n'.format(maxTm))
     
-    res = select_seq(n=n, slen=slen, minTm=minTm, maxTm=maxTm)
+    res = select_seq(n=n, slen=slen, minGC=minGC, maxGC=maxGC)
     with open('./selected_seq.csv', mode='w') as f:
         writer = csv.writer(f)
-        writer.writerow(['sequences', 'Tm'])
+        writer.writerow(['sequences', 'GC%', 'Tm'])
 
-        for (seq, Tm) in res:
-            writer.writerow([seq, Tm])
+        for (seq, gc, tm) in res:
+            writer.writerow([seq, gc, tm])
 
     print('Finished!')

@@ -37,5 +37,6 @@ def test_select_seq():
     assert len(res) == 3
     assert type(res[0][0]) == str
     assert type(res[1][1]) == float
+    assert type(res[2][2]) == float
     assert res[0][1] <= 62
     assert res[0][1] >= 59
