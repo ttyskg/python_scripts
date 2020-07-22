@@ -17,6 +17,13 @@ def calc_tm(seq):
     '''
 
     seq = seq.upper()
+    nA = seq.count('A')
+    nT = seq.count('T')
+    nC = seq.count('C')
+    nG = seq.count('G')
 
+    if len(seq) < 14:
+        return 2 * (nA + nT) + 4 * (nG + nC)
+    else:
+        return round(64.9 + 41 * (nG + nC - 16.4) / (len(seq)), 1)
 
-print(''.join(sorted(random_seq())))random_se
