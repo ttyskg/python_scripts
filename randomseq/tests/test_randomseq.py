@@ -1,4 +1,4 @@
-from main.randomseq import random_seq, calc_tm, select_seq
+from main.randomseq import random_seq, calc_tm, calc_gc, select_seq
 import re
 
 def test_length_random_seq():
@@ -22,6 +22,13 @@ def test_calc_tm_short():
 def test_calc_tm_long():
     seq = 'CTCTATCTAGCTCTCT'
     assert calc_tm(seq) == 40.8
+
+
+def test_calc_gc():
+    seq = 'CTCTATCTAGCTCTCT'
+    assert calc_gc(seq) == 43.8
+    seq = 'TACGGCCTCCGGCGTGTGGC'
+    assert calc_gc(seq) == 75.0
 
 
 def test_select_seq():

@@ -32,6 +32,25 @@ def calc_tm(seq):
         return round(64.9 + 41 * (nG + nC - 16.4) / (len(seq)), 1)
 
 
+def calc_gc(seq):
+    '''calculate GC content of inputed sequence.
+
+    :parm seq: DNA sequence for calucating its Tm.
+    :type seq: string
+    
+    :rtype: float, r
+    :return: GC% of the DNA sequence (round at the first decimal place)
+    '''
+
+    seq = seq.upper()
+    nA = seq.count('A')
+    nT = seq.count('T')
+    nC = seq.count('C')
+    nG = seq.count('G')
+
+    return round((nC + nG) / len(seq) * 100, 1)
+
+
 def select_seq(n=3, slen=20, minTm=59, maxTm=62):
     '''Create DNA sequences that meet the condition.
 
