@@ -1,4 +1,8 @@
+#!/usr/bin/python3
+
+import csv
 import random
+import sys
 
 # content of test_sample.py
 
@@ -52,5 +56,27 @@ def select_seq(n=3, slen=20, minTm=59, maxTm=62):
             res.add((seq, tm))
     
     return list(res)
-            
 
+
+if __name__ == '__main__':
+    args = sys.argv
+    n = int(args[1])
+    slen = str(args[2])
+    minTm = float(args[3])
+    maxTm = float(args[4])
+
+    print('Inputs:\n',\
+          '  Number of seq: {}\n'.format(n),\
+          '  Sequence length: {}\n'.format(slen),\
+          '  minimum Tm: {}\n'.format(minTm),\
+          '  maximum Tm: {}\n'.format(maxTm))
+    
+    res = select_seq(n=n, slen=slen, minTm=minTm, maxTm=maxTm)
+    with open('./selected_seq.csv', mode='w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['sequences', 'Tm'])
+
+        for (seq, Tm) in res:
+            writer.writerow([seq, Tm])
+
+    print('Finished!')
