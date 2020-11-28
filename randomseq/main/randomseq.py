@@ -43,8 +43,6 @@ def calc_gc(seq):
     '''
 
     seq = seq.upper()
-    nA = seq.count('A')
-    nT = seq.count('T')
     nC = seq.count('C')
     nG = seq.count('G')
 
