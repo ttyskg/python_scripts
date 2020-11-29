@@ -55,7 +55,7 @@ def select_seq(n=3, slen=20, minGC=59, maxGC=62):
     :parm n: Number of sequences to create
     :type n: int
     :parm slen: Sequence length
-    :parm slen: int
+    :type slen: int
     :parm minGC: minimum GC content
     :type minGC: float
     :parm maxGC: maximum GC contetn
@@ -79,7 +79,7 @@ def select_seq(n=3, slen=20, minGC=59, maxGC=62):
 if __name__ == '__main__':
     args = sys.argv
     n = int(args[1])
-    slen = str(args[2])
+    slen = int(args[2])
     minGC = float(args[3])
     maxGC = float(args[4])
 
